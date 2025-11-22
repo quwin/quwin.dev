@@ -15,6 +15,7 @@ export default function Navbar({
 }: NavbarProps) {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -45,7 +46,13 @@ export default function Navbar({
         }
     };
 
+    const handleResumeClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setIsPopupOpen(true);
+    }
+
     return (
+        <>
         <div
             className={`fixed top-0 w-full z-10 bg-quarter-spanish-white py-5 transition-transform duration-300 ${
                 isVisible ? "translate-y-0" : "-translate-y-full"
@@ -87,11 +94,30 @@ export default function Navbar({
                 </div>
                 <div className="flex items-center flex-col">
                 <div className="mx-4 cursor-pointer relative group">
-                    <a href="https://www.overleaf.com/read/mygkgshpxxjx#642b51" target="_blank" rel="noopener noreferrer">resume</a>
+                    <a onClick={handleResumeClick}>
+                    resume
+                    </a>
                     <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                 </div>
                 </div>
             </div>
         </div>
+
+{isPopupOpen && (
+    <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
+        <div className="relative bg-white p-6 rounded-xl shadow-xl max-w-md text-center">
+            <button
+                onClick={() => setIsPopupOpen(false)}
+                className="absolute top-3 right-3 text-xl font-bold hover:opacity-60"
+            >
+                ×
+            </button>
+            <p>
+                Please send an email to calvinnguyen03@gmail.com to request a PDF of the resume.
+            </p>
+        </div>
+    </div>
+)}
+    </>
     );
 }
