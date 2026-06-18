@@ -137,14 +137,17 @@ export default function ProjectAssistant() {
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesContainerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "end",
+    useEffect(() => {
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    container.scrollTo({
+        top: container.scrollHeight,
+        behavior: "smooth",
     });
-  }, [messages, isLoading]);
+    }, [messages, isLoading]);
   function handlePresetClick(preset: PresetQA) {
   setMessages((prev) => [
     ...prev,
@@ -162,10 +165,6 @@ export default function ProjectAssistant() {
 }
   function handleProjectChange(project: ProjectOption) {
     setSelectedProject(project);
-
-    setMessages((prev) => [
-      ...prev,
-    ]);
   }
 
   async function handleAsk(e: React.FormEvent) {
@@ -267,7 +266,7 @@ export default function ProjectAssistant() {
         {selectedProject.description}
       </div>
 
-      <div className="mt-6 max-h-96 space-y-4 overflow-y-auto pr-2">
+      <div ref={messagesContainerRef} className="mt-6 max-h-80 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -336,8 +335,6 @@ export default function ProjectAssistant() {
             Searching {selectedProject.label}...
           </div>
         )}
-
-        <div ref={messagesEndRef} />
       </div>
       {selectedProject.presets.length > 0 && (
         <div className="mt-6">
