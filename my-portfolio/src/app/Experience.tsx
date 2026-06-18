@@ -12,7 +12,7 @@ export default function Experience({ image, company, position, startMonth, start
     return (
         <div className="relative flex items-center my-8">
         {/* Image */}
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white p-3">
+        <div className="flex h-16 w-16 shrink-0 items-center justify-center p-3">
           <img
             src={image}
             alt={company}
