@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ProjectOption = {
   label: string;
@@ -85,17 +85,20 @@ export default function ProjectAssistant() {
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "end",
+    });
+  }, [messages, isLoading]);
 
   function handleProjectChange(project: ProjectOption) {
     setSelectedProject(project);
 
     setMessages((prev) => [
       ...prev,
-      {
-        role: "assistant",
-        content: `Switched context to ${project.label}.`,
-        projectLabel: project.label,
-      },
     ]);
   }
 
@@ -164,7 +167,7 @@ export default function ProjectAssistant() {
   return (
     <div className="font-lato my-12 rounded-2xl border border-limed-oak/30 bg-quarter-spanish-white/40 p-6 shadow-sm">
       <div className="font-playfair text-3xl font-bold">
-        ask about my projects
+        ask "me" anything
       </div>
 
       <p className="mt-2 text-base">
@@ -267,6 +270,8 @@ export default function ProjectAssistant() {
             Searching {selectedProject.label}...
           </div>
         )}
+
+        <div ref={messagesEndRef} />
       </div>
 
       <form onSubmit={handleAsk} className="mt-6 flex gap-3">
