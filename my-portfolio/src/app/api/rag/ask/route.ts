@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         question: body.question,
-        collection_name: body.collection_name ?? "quwin_quwin.dev",
+        collection_name: body.collection_name ?? "quwin_quwin",
         top_k: 20,
         rerank_top_k: 5,
         dense_weight: 1.0,

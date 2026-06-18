@@ -53,7 +53,7 @@ const PROJECTS: ProjectOption[] = [
     label: "About Me",
     collectionName: "quwin_quwin",
     description: "Ask about Ethan's background, skills, education, and experience.",
-    placeholder: "What sports does Ethan enjoy?",
+    placeholder: "What project is Ethan most proud of?",
     presets: aboutMePresets,
   },
   {
@@ -244,7 +244,6 @@ const [isLoading, setIsLoading] = useState(false);
         {PROJECTS.map((project) => {
           const isActive =
             project.collectionName === selectedProject.collectionName;
-
           return (
             <button
               key={project.collectionName}
