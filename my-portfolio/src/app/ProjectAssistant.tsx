@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 type PresetQA = {
   question: string;
@@ -282,7 +284,13 @@ const [isLoading, setIsLoading] = useState(false);
               </div>
             )}
 
-            <p className="whitespace-pre-wrap">{message.content}</p>
+            {message.role === "assistant" ? (
+                <div className="prose prose-sm max-w-none">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {message.content}
+                    </ReactMarkdown>
+                </div>
+            ) : (<p className="whitespace-pre-wrap">{message.content}</p>)}
 
             {message.sources && message.sources.length > 0 && (
               <div className="mt-4 border-t pt-3 text-sm">
@@ -309,10 +317,11 @@ const [isLoading, setIsLoading] = useState(false);
                           View repository
                         </a>
                       )}
-
-                      <p className="mt-1 line-clamp-2 opacity-80">
-                        {source.text_preview}
-                      </p>
+                      {source.section_heading && (
+                        <div className="text-xs opacity-70">
+                            Section: {source.section_heading}
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
