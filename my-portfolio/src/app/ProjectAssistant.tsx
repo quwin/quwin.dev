@@ -266,7 +266,7 @@ export default function ProjectAssistant() {
         {selectedProject.description}
       </div>
 
-      <div ref={messagesContainerRef} className="mt-6 max-h-80 space-y-4 overflow-y-auto pr-2">
+      <div ref={messagesContainerRef} className="mt-6 max-h-64 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
