@@ -336,7 +336,6 @@ export default function ProjectAssistant() {
           </div>
         )}
       </div>
-      <div ref={messagesContainerRef}></div>
       {selectedProject.presets.length > 0 && (
         <div className="mt-4">
             <div className="mb-2 text-sm font-bold opacity-70">
@@ -371,6 +370,7 @@ export default function ProjectAssistant() {
           Ask
         </button>
       </form>
+      <div ref={messagesContainerRef}></div>
     </div>
   );
 }
