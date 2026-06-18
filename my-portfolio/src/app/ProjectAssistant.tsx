@@ -239,7 +239,7 @@ export default function ProjectAssistant() {
         Select a project, then ask the RAG assistant about it.
       </p>
 
-      <div className="mt-6 flex flex-wrap gap-2">
+      <div className="mt-4 flex flex-wrap gap-2">
         {PROJECTS.map((project) => {
           const isActive =
             project.collectionName === selectedProject.collectionName;
@@ -266,7 +266,7 @@ export default function ProjectAssistant() {
         {selectedProject.description}
       </div>
 
-      <div ref={messagesContainerRef} className="mt-6 max-h-60 space-y-4 overflow-y-auto pr-2">
+      <div className="mt-4 max-h-60 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -336,8 +336,9 @@ export default function ProjectAssistant() {
           </div>
         )}
       </div>
+      <div ref={messagesContainerRef}></div>
       {selectedProject.presets.length > 0 && (
-        <div className="mt-6">
+        <div className="mt-4">
             <div className="mb-2 text-sm font-bold opacity-70">
             Common questions
             </div>
@@ -355,14 +356,13 @@ export default function ProjectAssistant() {
             </div>
         </div>
         )}
-      <form onSubmit={handleAsk} className="mt-6 flex gap-3">
+      <form onSubmit={handleAsk} className="mt-4 flex gap-3">
         <input
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder={selectedProject.placeholder}
             className="flex-1 rounded-xl border border-limed-oak/30 px-4 py-3 outline-none"
         />
-
         <button
           type="submit"
           disabled={isLoading}
