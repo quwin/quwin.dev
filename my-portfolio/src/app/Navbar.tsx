@@ -69,7 +69,14 @@ export default function Navbar({
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                     </div>
                 </div>
-
+                <div className="flex items-center flex-col">
+                    <div
+                        className="mx-4 cursor-pointer relative group"
+                        onClick={() => handleScrollTo(assistantRef)}>
+                        ask
+                        <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+                    </div>
+                </div>
                 <div className="flex items-center flex-col">
                     <div
                         className="mx-4 cursor-pointer relative group"
@@ -91,14 +98,6 @@ export default function Navbar({
                         className="mx-4 cursor-pointer relative group"
                         onClick={() => handleScrollTo(projectsRef)}>
                         projects
-                        <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
-                    </div>
-                </div>
-                <div className="flex items-center flex-col">
-                    <div
-                        className="mx-4 cursor-pointer relative group"
-                        onClick={() => handleScrollTo(assistantRef)}>
-                        ask
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                     </div>
                 </div>

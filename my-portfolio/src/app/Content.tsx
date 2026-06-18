@@ -18,15 +18,18 @@ export default function Content() {
         <>
             <Navbar
                 aboutRef={aboutRef}
+                assistantRef={assistantRef}
                 educationRef={educationRef}
                 workExperienceRef={workExperienceRef}
                 projectsRef={projectsRef}
-                assistantRef={assistantRef}
             />
             <div className="flex flex-col justify-center mx-40">
                 <div ref={aboutRef}>
                     <Label name="about" />
                     <Text label="about" />
+                </div>
+                <div ref={assistantRef}>
+                    <ProjectAssistant />
                 </div>
                 <div ref={educationRef}>
                     <Label name="education" />
@@ -35,8 +38,17 @@ export default function Content() {
                         image="/CSUS_logo.svg"
                         major="Computer Science, B.S."
                         startMonth="September"
-                        startYear="2021"
-                        endMonth="March"
+                        startYear="2025"
+                        endMonth="December"
+                        endYear="2027"
+                    />
+                    <Education
+                        school="Santa Rosa Junior College"
+                        image="/SRJC_logo.svg"
+                        major="Computer Science"
+                        startMonth="September"
+                        startYear="2023"
+                        endMonth="August"
                         endYear="2025"
                     />
                 </div>
@@ -47,9 +59,6 @@ export default function Content() {
                 <div ref={projectsRef}>
                     <Label name="projects" />
                     <Projects />
-                </div>
-                <div ref={assistantRef}>
-                    <ProjectAssistant />
                 </div>
             </div>
         </>

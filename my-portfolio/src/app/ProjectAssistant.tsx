@@ -64,18 +64,18 @@ const PROJECTS: ProjectOption[] = [
     presets: ragPresets,
   },
   {
-    label: "Portfolio Website",
-    collectionName: "quwin_quwin.dev",
-    description: "Ask about the Next.js portfolio site.",
-    placeholder: "How did this website integrate this LLM?",
-    presets: portfolioPresets,
-  },
-  {
     label: "GPU Poker Solver",
     collectionName: "quwin_UnderTheGun",
     description: "Ask about the GPU-accelerated postflop poker solver.",
     placeholder: "How long does the solver take, and how does it compare to other solvers?",
     presets: solverPresets,
+  },
+  {
+    label: "Community Leaderboard",
+    collectionName: "quwin_infiniport.al",
+    description: "Ask about the full-stack platform and Discord chatbot.",
+    placeholder: "How many Discord servers added the Chatbot?",
+    presets: infiniportalPresets,
   },
   {
     label: "Physics Mobile Game",
@@ -85,11 +85,11 @@ const PROJECTS: ProjectOption[] = [
     presets: gamePresets,
   },
   {
-    label: "Community Leaderboard",
-    collectionName: "quwin_infiniport.al",
-    description: "Ask about the full-stack platform and Discord chatbot.",
-    placeholder: "How many Discord servers added the Chatbot?",
-    presets: infiniportalPresets,
+    label: "Portfolio Website",
+    collectionName: "quwin_quwin.dev",
+    description: "Ask about the Next.js portfolio site.",
+    placeholder: "How did this website integrate this LLM?",
+    presets: portfolioPresets,
   },
 ];
 
@@ -233,7 +233,7 @@ const [isLoading, setIsLoading] = useState(false);
   return (
     <div className="font-lato my-12 rounded-2xl border border-limed-oak/30 bg-quarter-spanish-white/40 p-6 shadow-sm">
       <div className="font-playfair text-3xl font-bold">
-        ask "me" anything
+        portfolio assistant
       </div>
 
       <p className="mt-2 text-base">
