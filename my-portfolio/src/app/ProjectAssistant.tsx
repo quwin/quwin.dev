@@ -2,6 +2,45 @@
 
 import { useState } from "react";
 
+type ProjectOption = {
+  label: string;
+  collectionName: string;
+  description: string;
+};
+
+const PROJECTS: ProjectOption[] = [
+  {
+    label: "About Me",
+    collectionName: "quwin_quwin",
+    description: "Ask about me: my passions, hobbies, and experiences!",
+  },
+  {
+    label: "RAG Pipeline",
+    collectionName: "quwin_RAG-Github-Documentation-Pipeline",
+    description: "Ask about ingestion, Qdrant, hybrid retrieval, reranking, and FastAPI.",
+  },
+  {
+    label: "Portfolio Website",
+    collectionName: "quwin_quwin.dev",
+    description: "Ask about the Next.js portfolio site, components, layout, and deployment.",
+  },
+  {
+    label: "UnderTheGun",
+    collectionName: "quwin_UnderTheGun",
+    description: "Ask about the GPU-accelerated postflop poker solver.",
+  },
+  {
+    label: "Belevator",
+    collectionName: "quwin_Belevator-Tactics",
+    description: "Ask about my physics-based deterministic mobile game.",
+  },
+  {
+    label: "infiniport.al",
+    collectionName: "quwin_infiniport.al",
+    description: "Ask about the full-stack platform and Discord chatbot.",
+  },
+];
+
 type SourceChunk = {
   chunk_id: string | null;
   source_path: string | null;
@@ -27,20 +66,38 @@ type AskResponse = {
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
+  projectLabel?: string;
   sources?: SourceChunk[];
   confidence?: AskResponse["confidence"];
 };
 
 export default function ProjectAssistant() {
+  const [selectedProject, setSelectedProject] = useState<ProjectOption>(
+    PROJECTS[0]
+  );
+
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
       content:
-        "Ask me about Ethan's projects, portfolio website, RAG pipeline, tech stack, or implementation details.",
+        "Choose a project, then ask about its implementation, architecture, tech stack, and/or deployment.",
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
+
+  function handleProjectChange(project: ProjectOption) {
+    setSelectedProject(project);
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "assistant",
+        content: `Switched context to ${project.label}.`,
+        projectLabel: project.label,
+      },
+    ]);
+  }
 
   async function handleAsk(e: React.FormEvent) {
     e.preventDefault();
@@ -54,6 +111,7 @@ export default function ProjectAssistant() {
       {
         role: "user",
         content: trimmed,
+        projectLabel: selectedProject.label,
       },
     ]);
 
@@ -68,7 +126,7 @@ export default function ProjectAssistant() {
         },
         body: JSON.stringify({
           question: trimmed,
-          collection_name: "quwin_quwin.dev",
+          collection_name: selectedProject.collectionName,
         }),
       });
 
@@ -83,6 +141,7 @@ export default function ProjectAssistant() {
         {
           role: "assistant",
           content: data.answer,
+          projectLabel: selectedProject.label,
           sources: data.sources,
           confidence: data.confidence,
         },
@@ -94,6 +153,7 @@ export default function ProjectAssistant() {
           role: "assistant",
           content:
             "I couldn't reach the project assistant backend. Please try again later.",
+          projectLabel: selectedProject.label,
         },
       ]);
     } finally {
@@ -108,8 +168,35 @@ export default function ProjectAssistant() {
       </div>
 
       <p className="mt-2 text-base">
-        Query the RAG pipeline powering this portfolio.
+        Select a project, then ask the RAG assistant about it.
       </p>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        {PROJECTS.map((project) => {
+          const isActive =
+            project.collectionName === selectedProject.collectionName;
+
+          return (
+            <button
+              key={project.collectionName}
+              type="button"
+              onClick={() => handleProjectChange(project)}
+              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                isActive
+                  ? "bg-limed-oak text-white"
+                  : "bg-white text-limed-oak hover:bg-limed-oak/10"
+              }`}
+            >
+              {project.label}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-4 rounded-xl bg-white/70 px-4 py-3 text-sm">
+        <span className="font-bold">Current context:</span>{" "}
+        {selectedProject.description}
+      </div>
 
       <div className="mt-6 max-h-96 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
@@ -121,6 +208,12 @@ export default function ProjectAssistant() {
                 : "mr-auto max-w-[85%] rounded-xl bg-white px-4 py-3"
             }
           >
+            {message.projectLabel && (
+              <div className="mb-2 text-xs font-bold opacity-70">
+                {message.projectLabel}
+              </div>
+            )}
+
             <p className="whitespace-pre-wrap">{message.content}</p>
 
             {message.sources && message.sources.length > 0 && (
@@ -171,7 +264,7 @@ export default function ProjectAssistant() {
 
         {isLoading && (
           <div className="mr-auto max-w-[85%] rounded-xl bg-white px-4 py-3">
-            Thinking...
+            Searching {selectedProject.label}...
           </div>
         )}
       </div>
@@ -180,7 +273,7 @@ export default function ProjectAssistant() {
         <input
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Provide a brief summary of this project?"
+          placeholder={`Ask about ${selectedProject.label}...`}
           className="flex-1 rounded-xl border border-limed-oak/30 px-4 py-3 outline-none"
         />
 
