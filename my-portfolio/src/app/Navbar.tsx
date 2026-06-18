@@ -5,6 +5,7 @@ type NavbarProps = {
     educationRef: React.RefObject<HTMLDivElement | null>;
     workExperienceRef: React.RefObject<HTMLDivElement | null>;
     projectsRef: React.RefObject<HTMLDivElement | null>;
+    assistantRef: React.RefObject<HTMLDivElement | null>;
 };
 
 export default function Navbar({
@@ -88,17 +89,25 @@ export default function Navbar({
                     <div
                         className="mx-4 cursor-pointer relative group"
                         onClick={() => handleScrollTo(projectsRef)}>
-                    projects
+                        projects
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                     </div>
                 </div>
                 <div className="flex items-center flex-col">
-                <div className="mx-4 cursor-pointer relative group">
-                    <a onClick={handleResumeClick}>
-                    resume
-                    </a>
-                    <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+                    <div
+                        className="mx-4 cursor-pointer relative group"
+                        onClick={() => handleScrollTo(assistantRef)}>
+                        ask
+                        <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+                    </div>
                 </div>
+                <div className="flex items-center flex-col">
+                    <div className="mx-4 cursor-pointer relative group">
+                        <a onClick={handleResumeClick}>
+                        resume
+                        </a>
+                        <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
+                    </div>
                 </div>
             </div>
         </div>
