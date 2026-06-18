@@ -12,7 +12,7 @@ export default function Education( {image, school, major, startMonth, startYear,
         <div className="relative flex items-center my-8">
             {/* Image */}
             <div>
-                <img src={image} max-width="20%" height="auto"/>
+                <img src={image} max-height="24px" width="auto"/>
             </div>
             {/* School and Major */}
             <div className="flex flex-col text-left font-lato text-xl ml-5">
