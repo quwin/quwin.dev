@@ -51,7 +51,7 @@ const infiniportalPresets: PresetQA[]  = [
 const PROJECTS: ProjectOption[] = [
   {
     label: "About Me",
-    collectionName: "quwin_quwin.dev",
+    collectionName: "quwin_quwin",
     description: "Ask about Ethan's background, skills, education, and experience.",
     placeholder: "What sports does Ethan enjoy?",
     presets: aboutMePresets,
@@ -246,7 +246,7 @@ export default function ProjectAssistant() {
             project.collectionName === selectedProject.collectionName;
 
           return (
-            <button
+            <button 
               key={project.collectionName}
               type="button"
               onClick={() => handleProjectChange(project)}
@@ -267,14 +267,14 @@ export default function ProjectAssistant() {
         {selectedProject.description}
       </div>
 
-      <div className="mt-6 max-h-96 space-y-4 overflow-y-auto pr-2">
+      <div className="mt-6 h-88 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
             className={
               message.role === "user"
-                ? "ml-auto max-w-[85%] rounded-xl bg-limed-oak px-4 py-3 text-white"
-                : "mr-auto max-w-[85%] rounded-xl bg-white px-4 py-3"
+                ? "ml-auto max-w-[80%] rounded-xl bg-limed-oak px-4 py-3 text-white"
+                : "mr-auto max-w-[80%] rounded-xl bg-white px-4 py-3"
             }
           >
             {message.projectLabel && (
@@ -332,7 +332,7 @@ export default function ProjectAssistant() {
         ))}
 
         {isLoading && (
-          <div className="mr-auto max-w-[85%] rounded-xl bg-white px-4 py-3">
+          <div className="mr-auto max-w-[80%] rounded-xl bg-white px-4 py-3">
             Searching {selectedProject.label}...
           </div>
         )}
