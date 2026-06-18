@@ -2,42 +2,94 @@
 
 import { useEffect, useRef, useState } from "react";
 
+type PresetQA = {
+  question: string;
+  answer: string;
+};
+
 type ProjectOption = {
   label: string;
   collectionName: string;
   description: string;
+  placeholder: string;
+  presets: PresetQA[];
 };
+
+const aboutMePresets: PresetQA[]  = [
+
+]
+const ragPresets: PresetQA[]  = [
+    {
+        question: "What does the RAG pipeline do?",
+        answer: "The RAG pipeline ingests GitHub repository documentation, chunks it, embeds it, stores dense and sparse vectors in Qdrant, retrieves relevant context, reranks results, and generates grounded answers with citations.",
+    },
+    {
+    question: "Why use hybrid retrieval?",
+    answer: "Hybrid retrieval combines dense semantic search with sparse keyword-aware search, which is useful for technical documentation where exact names, file paths, config keys, and function names matter.",
+    },
+]
+const portfolioPresets: PresetQA[]  = [
+    {   
+        question: "What stack does this portfolio use?",
+        answer: "This portfolio uses Next.js, React, TypeScript, Tailwind CSS, and Vercel for deployment.",
+    },
+    {
+        question: "How is the portfolio organized?",
+        answer:"The portfolio is organized into reusable React components for the viewport hero, content sections, navigation, education, experience, projects, and the project assistant.",
+    },
+]
+const solverPresets: PresetQA[]  = [
+
+]
+const gamePresets: PresetQA[]  = [
+
+]
+const infiniportalPresets: PresetQA[]  = [
+
+]
 
 const PROJECTS: ProjectOption[] = [
   {
     label: "About Me",
-    collectionName: "quwin_quwin",
-    description: "Ask about me: my passions, hobbies, and experiences!",
+    collectionName: "quwin_quwin.dev",
+    description: "Ask about Ethan's background, skills, education, and experience.",
+    placeholder: "What sports does Ethan enjoy?",
+    presets: aboutMePresets,
   },
   {
     label: "RAG Pipeline",
     collectionName: "quwin_RAG-Github-Documentation-Pipeline",
-    description: "Ask about ingestion, Qdrant, hybrid retrieval, reranking, and FastAPI.",
+    description: "Ask about ingestion, Qdrant, hybrid retrieval, and FastAPI.",
+    placeholder: "What methods are used to ensure that citations are accurate?",
+    presets: ragPresets,
   },
   {
     label: "Portfolio Website",
     collectionName: "quwin_quwin.dev",
-    description: "Ask about the Next.js portfolio site, components, layout, and deployment.",
+    description: "Ask about the Next.js portfolio site.",
+    placeholder: "How did this website integrate this LLM?",
+    presets: portfolioPresets,
   },
   {
     label: "UnderTheGun",
     collectionName: "quwin_UnderTheGun",
     description: "Ask about the GPU-accelerated postflop poker solver.",
+    placeholder: "How long does the solver take, and how does it compare to other solvers?",
+    presets: solverPresets,
   },
   {
     label: "Belevator",
     collectionName: "quwin_Belevator-Tactics",
     description: "Ask about my physics-based deterministic mobile game.",
+    placeholder: "Where can I download the game?",
+    presets: gamePresets,
   },
   {
     label: "infiniport.al",
     collectionName: "quwin_infiniport.al",
     description: "Ask about the full-stack platform and Discord chatbot.",
+    placeholder: "How many Discord servers added the Chatbot?",
+    presets: infiniportalPresets,
   },
 ];
 
@@ -93,7 +145,21 @@ export default function ProjectAssistant() {
       block: "end",
     });
   }, [messages, isLoading]);
-
+  function handlePresetClick(preset: PresetQA) {
+  setMessages((prev) => [
+    ...prev,
+    {
+      role: "user",
+      content: preset.question,
+      projectLabel: selectedProject.label,
+    },
+    {
+      role: "assistant",
+      content: preset.answer,
+      projectLabel: selectedProject.label,
+    },
+  ]);
+}
   function handleProjectChange(project: ProjectOption) {
     setSelectedProject(project);
 
@@ -273,13 +339,31 @@ export default function ProjectAssistant() {
 
         <div ref={messagesEndRef} />
       </div>
-
+      {selectedProject.presets.length > 0 && (
+        <div className="mt-6">
+            <div className="mb-2 text-sm font-bold opacity-70">
+            Common questions
+            </div>
+            <div className="flex flex-wrap gap-2">
+            {selectedProject.presets.map((preset) => (
+                <button
+                key={preset.question}
+                type="button"
+                onClick={() => handlePresetClick(preset)}
+                className="rounded-full bg-white px-4 py-2 text-sm font-bold text-limed-oak transition hover:bg-limed-oak hover:text-white"
+                >
+                {preset.question}
+                </button>
+            ))}
+            </div>
+        </div>
+        )}
       <form onSubmit={handleAsk} className="mt-6 flex gap-3">
         <input
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder={`Ask about ${selectedProject.label}...`}
-          className="flex-1 rounded-xl border border-limed-oak/30 px-4 py-3 outline-none"
+            value={question}
+            onChange={(e) => setQuestion(e.target.value)}
+            placeholder={selectedProject.placeholder}
+            className="flex-1 rounded-xl border border-limed-oak/30 px-4 py-3 outline-none"
         />
 
         <button
