@@ -29,8 +29,8 @@ export default function Content() {
                 <div ref={educationRef}>
                     <Label name="education" />
                     <Education
-                        school="University of California, Irvine"
-                        image="/UCI_logo.svg"
+                        school="California State University, Sacramento"
+                        image="/CSUS_logo.svg"
                         major="Computer Science, B.S."
                         startMonth="September"
                         startYear="2021"

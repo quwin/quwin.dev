@@ -1,23 +1,21 @@
 import Project from "./Project"
 export default function Projects() {
-    const foshowArray = ["Java", "HTML", "CSS", "JavaScript", "MySQL", "JDBC", "jQuery", "Tomcat", "Maven", "AWS", "Docker", "Kubernetes", "Apache", "reCAPTCHA"];
-    const navigatorArray = ["Python", "Flask", "OpenStreetMap", "FlightAware API", "ClaudeAI API"];
-    const searchEngineArray = ["React", "Node", "Python", "Flask", "OpenAI API"];
-    const tldrifyArray = ["React", "Next", "Tailwind CSS", "Flask", "Python", "HuggingFace"];
+    const ragPipelineArray = ["Python", "Qdrant", "Langchain", "HuggingFace", "PyTorch", "FastAPI", "Docker", "AWS"];
+    const pokerSolverArray = ["C++", "Cuda", "FLTK"];
     const portfolioArray = ["React", "Next", "Tailwind CSS", "TypeScript", "Vercel"];
-    const messengerArray = ["Python", "Tkinter"]
-    const diabetesClassifierArray = ["Python", "Sci-kit", "K-Nearest-Neighbors", "Logistic Regression", "Neural Network", "Decision Trees"];
-    const githubCalendarArray = ["React", "Next", "Tailwind CSS", "TypeScript", "GitHub GraphQL API"]
+    const belevatorArray = ["Rust", "Godot", "SpacetimeDB","SQL", "iOS API", "Android API", "OAuth"];
+    const infiniportalArray = ["Python", "Javascript", "MySQL", "Flask", "Apache"]
+    const dubuArray = ["Javascript", "HTML", "CSS"];
+    const gwepArray = ["Rust", "MySQL", "Spacestation13 API"]
     return (
         <div>
-            <Project name="GitHub Contribution Calendar Extension" link="https://github.com/cnguyen03/github_calendar" description="A Chrome extension that displays your GitHub contributions calendar" stack={githubCalendarArray} startMonth="March" startYear="2025" endMonth="April" endYear="2025"></Project>
-            <Project name="Calvin's Portfolio" link="https://github.com/cnguyen03/cnguyen03.github.io" description="My new portfolio website!" stack={portfolioArray} startMonth="December" startYear="2024" endMonth="December" endYear="2024"></Project>
-            <Project name="Foshow" link="https://github.com/uci-jherold2-fall24-cs122b/2024-fall-cs-122b-foshow" description="Full-stack architecture of a movie catalog application, supporting ~20 medium features all protected by various security layers" stack={foshowArray} startMonth="September" startYear="2024" endMonth="December" endYear="2024"></Project>
-            <Project name="Flight POI Navigator" link="" description="Novel flight navigator at Collins Aerospace 2024 FlightAware Hackathon, generating optimal flight paths and inferring POIs using user-provided airport names and declared locations" stack={navigatorArray} startMonth="November" startYear="2024" endMonth="November" endYear="2024"></Project>
-            <Project name="Diabetes Classifier" link="" description="Applied model classifiers trained on the Diabetes 130-US Hospitals dataset" stack={diabetesClassifierArray} startMonth="April" startYear="2024" endMonth="June" endYear="2024"></Project>
-            <Project name="TLDRify" link="https://github.com/cnguyen03/tldrify" description="An application that accepts a link from the user and provides a tldr (or summary) of the content present on the given page" stack={tldrifyArray} startMonth="June" startYear="2023" endMonth="July" endYear="2023"></Project>
-            <Project name="ICSearch" link="https://github.com/cnguyen03/ICSearch" description="A search engine that scrapes pages from UCI's web domain" stack={searchEngineArray} startMonth="April" startYear="2023" endMonth="June" endYear="2023"></Project>
-            <Project name="Class Messenger" link="" description="Messenger system utilizing web sockets and file system" stack={messengerArray} startMonth="January" startYear="2022" endMonth="March" endYear="2022"></Project>
+            <Project name="RAG Pipeline for Github Documentation" link="https://github.com/quwin/RAG-Github-Documentation-Pipeline" description="A RAG-based deployable pipeline for ingesting and querying Github Documentation for LLMs, used here!" stack={ragPipelineArray} startMonth="June" startYear="2026" endMonth="July" endYear="2026"></Project>
+            <Project name="UnderTheGun: GPU-Accelerated Postflop Poker Solver" link="https://github.com/quwin/UnderTheGun" description="An effecient No-Limit Texas Hold'em Postflop Poker Solver implementing GPU-accelerated Counterfactual Regret Minimization" stack={pokerSolverArray} startMonth="May" startYear="2026" endMonth="June" endYear="2026"></Project>
+            <Project name="Portfolio Website" link="https://github.com/quwin/quwin.dev" description="My new portfolio website!" stack={portfolioArray} startMonth="June" startYear="2026" endMonth="June" endYear="2026"></Project>
+            <Project name="Belevator" link="" description="A cross-platform deterministic physics-based mobile game, available on iOS and Android" stack={belevatorArray} startMonth="June" startYear="2025" endMonth="April" endYear="2026"></Project>
+            <Project name="infiniport.al" link="https://github.com/quwin/infiniport.al" description="A full-stack web platform with AI-assisted Discord chatbot for community engagement" stack={infiniportalArray} startMonth="May" startYear="2024" endMonth="August" endYear="2024"></Project>
+            <Project name="dubu.pro" link="https://github.com/quwin/dubu.pro" description="A visual coaching and analytics tool for the game Omega Strikers, using jQuery as a drawing tool." stack={dubuArray} startMonth="July" startYear="2023" endMonth="July" endYear="2023"></Project>
+            <Project name="Chemical Recipe Search Engine" link="https://github.com/quwin/gwep_chem_finder" description="A high-performance search engine for chemical recipes for SpaceStation13" stack={gwepArray} startMonth="October" startYear="2022" endMonth="November" endYear="2022"></Project>
         </div>
     )
 }

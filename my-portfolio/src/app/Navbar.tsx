@@ -113,7 +113,7 @@ export default function Navbar({
                 ×
             </button>
             <p>
-                Please send an email to calvinnguyen03@gmail.com to request a PDF of the resume.
+                Please send an email to kienethantran@gmail.com to request a PDF of the resume.
             </p>
         </div>
     </div>

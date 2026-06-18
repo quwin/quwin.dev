@@ -3,7 +3,7 @@ export default function Contacts() {
       <div className="flex my-4 justify-center space-x-10">
         {/* LinkedIn Icon */}
         <div className="group flex flex-col items-center">
-        <a href="https://www.linkedin.com/in/cnguyen-in/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/kien-ethan-tran/" target="_blank" rel="noopener noreferrer">
             <img
                 src="/linkedin.svg"
                 alt="LinkedIn"
@@ -17,7 +17,7 @@ export default function Contacts() {
   
         {/* GitHub Icon */}
         <div className="group flex flex-col items-center">
-        <a href="https://github.com/cnguyen03" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/quwin" target="_blank" rel="noopener noreferrer">
           <img
             src="/github.svg"
             alt="Github"
@@ -31,7 +31,7 @@ export default function Contacts() {
   
         {/* Email Icon */}
         <div className="group flex flex-col items-center">
-            <a href="https://mail.google.com/mail/u/0/?fs=1&to=calvinnguyen03@gmail.com&tf=cm" target="_blank" rel="noopener noreferrer">
+            <a href="https://mail.google.com/mail/u/0/?fs=1&to=kienethantran@gmail.com&tf=cm" target="_blank" rel="noopener noreferrer">
           <img
             src="/mail.svg"
             alt="Email"
