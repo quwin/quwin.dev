@@ -125,6 +125,25 @@ type ChatMessage = {
   confidence?: AskResponse["confidence"];
 };
 
+function getUniqueSources(sources: SourceChunk[]) {
+  const seen = new Set<string>();
+  return sources.filter((source) => {
+    const key = source.repo_url
+      ? `${source.repo_url}|${source.source_path ?? ""}`
+      : source.source_path ?? "Unknown source";
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+function getSourceFileUrl(source: SourceChunk) {
+  if (!source.repo_url || !source.source_path) return null;
+
+  const cleanRepoUrl = source.repo_url.replace(/\/$/, "");
+  const cleanSourcePath = source.source_path.replace(/^\/+/, "");
+  return `${cleanRepoUrl}/blob/master/${cleanSourcePath}`;
+}
+
 export default function ProjectAssistant() {
   const [selectedProject, setSelectedProject] = useState<ProjectOption>(
     PROJECTS[0]
@@ -293,40 +312,34 @@ const [isLoading, setIsLoading] = useState(false);
             ) : (<p className="whitespace-pre-wrap">{message.content}</p>)}
 
             {message.sources && message.sources.length > 0 && (
-              <div className="mt-4 border-t pt-3 text-sm">
-                <div className="font-bold">Sources</div>
+  <div className="mt-4 border-t pt-3 text-sm">
+    <div className="font-bold">Sources</div>
 
-                <div className="mt-2 space-y-2">
-                  {message.sources.slice(0, 3).map((source, sourceIndex) => (
-                    <div key={sourceIndex}>
-                      <div className="font-bold">
-                        {source.source_path ?? "Unknown source"}
-                      </div>
-
-                      {source.section_heading && (
-                        <div>Section: {source.section_heading}</div>
-                      )}
-
-                      {source.repo_url && (
-                        <a
-                          href={source.repo_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline"
-                        >
-                          View repository
-                        </a>
-                      )}
-                      {source.section_heading && (
-                        <div className="text-xs opacity-70">
-                            Section: {source.section_heading}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+        <div className="mt-2 space-y-2">
+        {getUniqueSources(message.sources).slice(0, 3).map((source, sourceIndex) => (
+            <div key={sourceIndex}>
+            {getSourceFileUrl(source) ? (
+                <a
+                    href={getSourceFileUrl(source)!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold underline"
+                >
+                    {source.source_path ?? "Unknown source"}
+                </a>
+                ) : (
+                <div className="font-bold">
+                    {source.source_path ?? "Unknown source"}
                 </div>
-              </div>
             )}
+            <p className="mt-1 line-clamp-2 opacity-80">
+                {source.text_preview}
+            </p>
+            </div>
+        ))}
+        </div>
+    </div>
+    )}
 
             {message.confidence && (
               <div className="mt-3 text-xs opacity-70">
