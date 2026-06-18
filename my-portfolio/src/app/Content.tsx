@@ -35,7 +35,7 @@ export default function Content() {
                     <Label name="education" />
                     <Education
                         school="California State University, Sacramento"
-                        image="/CSUS_logo.svg"
+                        image="/CSUS_logo.png"
                         major="Computer Science, B.S."
                         startMonth="September"
                         startYear="2025"
@@ -44,7 +44,7 @@ export default function Content() {
                     />
                     <Education
                         school="Santa Rosa Junior College"
-                        image="/SRJC_logo.svg"
+                        image="/SRJC_logo.png"
                         major="Computer Science"
                         startMonth="September"
                         startYear="2023"

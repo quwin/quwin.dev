@@ -332,9 +332,9 @@ const [isLoading, setIsLoading] = useState(false);
                     {source.source_path ?? "Unknown source"}
                 </div>
             )}
-            <p className="mt-1 line-clamp-2 opacity-80">
+            {/* <p className="mt-1 line-clamp-2 opacity-80">
                 {source.text_preview}
-            </p>
+            </p> */}
             </div>
         ))}
         </div>
