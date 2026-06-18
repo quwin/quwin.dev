@@ -144,7 +144,7 @@ export default function ProjectAssistant() {
     if (!container) return;
 
     container.scrollTo({
-        top: container.scrollHeight,
+        top: container.scrollHeight + 12,
         behavior: "smooth",
     });
     }, [messages, isLoading]);
@@ -266,7 +266,7 @@ export default function ProjectAssistant() {
         {selectedProject.description}
       </div>
 
-      <div ref={messagesContainerRef} className="mt-6 max-h-64 space-y-4 overflow-y-auto pr-2">
+      <div ref={messagesContainerRef} className="mt-6 max-h-60 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
