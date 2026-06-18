@@ -71,21 +71,21 @@ const PROJECTS: ProjectOption[] = [
     presets: portfolioPresets,
   },
   {
-    label: "UnderTheGun",
+    label: "GPU Poker Solver",
     collectionName: "quwin_UnderTheGun",
     description: "Ask about the GPU-accelerated postflop poker solver.",
     placeholder: "How long does the solver take, and how does it compare to other solvers?",
     presets: solverPresets,
   },
   {
-    label: "Belevator",
+    label: "Physics Mobile Game",
     collectionName: "quwin_Belevator-Tactics",
     description: "Ask about my physics-based deterministic mobile game.",
     placeholder: "Where can I download the game?",
     presets: gamePresets,
   },
   {
-    label: "infiniport.al",
+    label: "Community Leaderboard",
     collectionName: "quwin_infiniport.al",
     description: "Ask about the full-stack platform and Discord chatbot.",
     placeholder: "How many Discord servers added the Chatbot?",
@@ -136,17 +136,18 @@ export default function ProjectAssistant() {
         "Choose a project, then ask about its implementation, architecture, tech stack, and/or deployment.",
     },
   ]);
-  const [isLoading, setIsLoading] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
   const messagesContainerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-    const container = messagesContainerRef.current;
-    if (!container) return;
+        const container = messagesContainerRef.current;
+        if (!container) return;
 
-    container.scrollTo({
-        top: container.scrollHeight + 12,
-        behavior: "smooth",
-    });
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+            container.scrollTop = container.scrollHeight;
+            });
+        });
     }, [messages, isLoading]);
   function handlePresetClick(preset: PresetQA) {
   setMessages((prev) => [
@@ -266,7 +267,7 @@ export default function ProjectAssistant() {
         {selectedProject.description}
       </div>
 
-      <div className="mt-4 max-h-60 space-y-4 overflow-y-auto pr-2">
+      <div ref={messagesContainerRef} className="mt-4 max-h-60 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -370,7 +371,6 @@ export default function ProjectAssistant() {
           Ask
         </button>
       </form>
-      <div ref={messagesContainerRef}></div>
     </div>
   );
 }
