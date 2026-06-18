@@ -11,25 +11,27 @@ type ExperienceProps = {
 export default function Experience({ image, company, position, startMonth, startYear, endMonth, endYear}: ExperienceProps) {
     return (
         <div className="relative flex items-center my-8">
-          {/* Image */}
-          <div>
-            <img src={image} max-height="24px" width="auto" />
-          </div>
-      
-          {/* Company and Position */}
-          <div className="flex flex-col text-left font-lato text-xl ml-5">
-            <div className="font-bold">{company}</div>
-            <div className="text-base">{position}</div>
-          </div>
-          {/* Dates */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 text-right font-lato text-xl">
-            <div>
-              {startMonth} {startYear} - {endMonth} {endYear}
-            </div>
-          </div>
-          
+        {/* Image */}
+        <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white p-3">
+          <img
+            src={image}
+            alt={company}
+            className="h-full w-full object-contain"
+          />
         </div>
 
-      );
-      
+        {/* School and Major */}
+        <div className="flex flex-col text-left font-lato text-xl ml-5">
+          <div className="font-bold">{company}</div>
+          <div className="text-base">{position}</div>
+        </div>
+
+        {/* Dates */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 text-right font-lato text-xl">
+          <div>
+            {startMonth} {startYear} - {endMonth} {endYear}
+          </div>
+        </div>
+      </div>
+    );
 };
