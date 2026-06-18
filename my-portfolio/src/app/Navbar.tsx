@@ -13,6 +13,7 @@ export default function Navbar({
     educationRef,
     workExperienceRef,
     projectsRef,
+    assistantRef,
 }: NavbarProps) {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
