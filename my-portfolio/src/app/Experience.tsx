@@ -13,7 +13,7 @@ export default function Experience({ image, company, position, startMonth, start
         <div className="relative flex items-center my-8">
           {/* Image */}
           <div>
-            <img src={image} />
+            <img src={image} max-width="20%" height="auto" />
           </div>
       
           {/* Company and Position */}
