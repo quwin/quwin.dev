@@ -61,7 +61,7 @@ const PROJECTS: ProjectOption[] = [
   {
     label: "RAG Pipeline",
     collectionName: "quwin_RAG-Github-Documentation-Pipeline",
-    description: "Ask about ingestion, Qdrant, hybrid retrieval, and FastAPI.",
+    description: "Ask about the RAG Pipeline's architecture and accuracy",
     placeholder: "What methods are used to ensure that citations are accurate?",
     presets: ragPresets,
   },
@@ -83,13 +83,13 @@ const PROJECTS: ProjectOption[] = [
     label: "Physics Mobile Game",
     collectionName: "quwin_Belevator-Tactics",
     description: "Ask about my physics-based deterministic mobile game.",
-    placeholder: "Where can I download the game?",
+    placeholder: "How was the physics engine networked?",
     presets: gamePresets,
   },
   {
     label: "Portfolio Website",
     collectionName: "quwin_quwin.dev",
-    description: "Ask about the Next.js portfolio site.",
+    description: "Ask about this Next.js portfolio site.",
     placeholder: "How did this website integrate this LLM?",
     presets: portfolioPresets,
   },
@@ -153,8 +153,8 @@ export default function ProjectAssistant() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       role: "assistant",
-      content:
-        "Choose a project, then ask about its implementation, architecture, tech stack, and/or deployment.",
+      content: "Hi, I'm Ethan's portfolio assistant. Choose a project, then ask about its implementation, architecture, tech stack, and/or deployment.",
+      projectLabel: "Portfolio Assistant"
     },
   ]);
 const [isLoading, setIsLoading] = useState(false);
@@ -258,9 +258,11 @@ const [isLoading, setIsLoading] = useState(false);
       </div>
 
       <p className="mt-2 text-base">
-        Select a project, then ask the RAG assistant about it.
+        Select a project, then ask the LLM agent about it.
       </p>
-
+      <div className="mb-1 text-sm">
+            Responses typically take 2 to 4 minutes, so feel free to look around while you wait!
+      </div>
       <div className="mt-4 flex flex-wrap gap-2">
         {PROJECTS.map((project) => {
           const isActive =
@@ -287,7 +289,7 @@ const [isLoading, setIsLoading] = useState(false);
         {selectedProject.description}
       </div>
 
-      <div ref={messagesContainerRef} className="mt-4 max-h-60 space-y-4 overflow-y-auto pr-2">
+      <div ref={messagesContainerRef} className="mt-4 max-h-84 space-y-4 overflow-y-auto pr-2">
         {messages.map((message, index) => (
           <div
             key={index}
@@ -358,7 +360,7 @@ const [isLoading, setIsLoading] = useState(false);
           </div>
         )}
       </div>
-      {selectedProject.presets.length > 0 && (
+      {/* {selectedProject.presets.length > 0 && (
         <div className="mt-4">
             <div className="mb-2 text-sm font-bold opacity-70">
             Common questions
@@ -376,7 +378,7 @@ const [isLoading, setIsLoading] = useState(false);
             ))}
             </div>
         </div>
-        )}
+        )} */}
       <form onSubmit={handleAsk} className="mt-4 flex gap-3">
         <input
             value={question}

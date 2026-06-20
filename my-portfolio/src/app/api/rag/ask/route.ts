@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
         { status: 500 }
       );
     }
-
+    const additionalHeader: string = "In a brief, cited response wiithout extra details, answer the question: "
     const response = await fetch(`${ragApiUrl}/v1/ask`, {
       method: "POST",
       headers: {
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
           : {}),
       },
       body: JSON.stringify({
-        question: body.question,
+        question: additionalHeader + body.question,
         collection_name: body.collection_name ?? "quwin_quwin",
         top_k: 20,
         rerank_top_k: 5,
