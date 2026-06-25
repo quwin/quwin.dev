@@ -56,11 +56,11 @@ export default function Navbar({
     return (
         <>
         <div
-            className={`fixed top-0 w-full z-10 bg-quarter-spanish-white py-5 transition-transform duration-300 ${
+            className={`fixed top-0 z-10 w-full bg-quarter-spanish-white py-3 transition-transform duration-300 sm:py-5 ${
                 isVisible ? "translate-y-0" : "-translate-y-full"
             }`}
         >
-            <div className="flex justify-center font-playfair text-2xl">
+            <div className="flex overflow-x-auto whitespace-nowrap px-4 font-playfair text-lg sm:justify-center sm:text-2xl">
                 <div className="flex items-center flex-col">
                     <div
                         className="mx-4 cursor-pointer relative group"

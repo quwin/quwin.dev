@@ -23,7 +23,7 @@ export default function Content() {
                 workExperienceRef={workExperienceRef}
                 projectsRef={projectsRef}
             />
-            <div className="flex flex-col justify-center mx-40">
+            <div className="mx-auto flex w-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
                 <div ref={aboutRef}>
                     <Label name="about" />
                     <Text label="about" />

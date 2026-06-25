@@ -295,8 +295,8 @@ const [isLoading, setIsLoading] = useState(false);
             key={index}
             className={
               message.role === "user"
-                ? "ml-auto max-w-[85%] rounded-xl bg-limed-oak px-4 py-3 text-white"
-                : "mr-auto max-w-[85%] rounded-xl bg-white px-4 py-3"
+                ? "ml-auto max-w-full sm:max-w-[85%] rounded-xl bg-limed-oak px-4 py-3 text-white"
+                : "mr-auto max-w-full sm:max-w-[85%] rounded-xl bg-white px-4 py-3"
             }
           >
             {message.projectLabel && (
@@ -355,7 +355,7 @@ const [isLoading, setIsLoading] = useState(false);
         ))}
 
         {isLoading && (
-          <div className="mr-auto max-w-[85%] rounded-xl bg-white px-4 py-3">
+          <div className="mr-auto max-w-full sm:max-w-[85%] rounded-xl bg-white px-4 py-3">
             Searching {selectedProject.label}...
           </div>
         )}
@@ -379,17 +379,17 @@ const [isLoading, setIsLoading] = useState(false);
             </div>
         </div>
         )} */}
-      <form onSubmit={handleAsk} className="mt-4 flex gap-3">
+      <form onSubmit={handleAsk} className="mt-4 flex flex-col gap-3 sm:flex-row">
         <input
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder={selectedProject.placeholder}
-            className="flex-1 rounded-xl border border-limed-oak/30 px-4 py-3 outline-none"
+            className="min-w-0 flex-1 rounded-xl border border-limed-oak/30 px-4 py-3 outline-none"
         />
         <button
           type="submit"
           disabled={isLoading}
-          className="rounded-xl bg-limed-oak px-5 py-3 font-bold text-white disabled:opacity-50"
+          className="rounded-xl bg-limed-oak px-5 py-3 font-bold text-white disabled:opacity-50 sm:w-auto"
         >
           Ask
         </button>

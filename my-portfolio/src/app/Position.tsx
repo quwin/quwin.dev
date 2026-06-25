@@ -1,5 +1,5 @@
 export default function Position() {
     return (
-        <div className="font-playfair text-xl mt-52">software development student at CSUS</div>
+        <div className="mt-44 px-4 text-center font-playfair text-lg sm:mt-52 sm:text-xl">software development student at CSUS</div>
     )
 };

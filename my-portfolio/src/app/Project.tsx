@@ -14,21 +14,26 @@ export default function Project( { name, link, description, stack, startMonth, s
     return (
         <div className="relative font-lato flex flex-col my-8">
             {/* Name and GitHub */}
-            <div className="flex items-center justify-between text-xl">
+            <div className="flex flex-col gap-2 text-lg sm:flex-row sm:items-center sm:justify-between sm:text-xl">
                 {link ? (
-                <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center text-left">
-                    <div className="font-bold">{name}</div>
+                <a
+                    href={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-w-0 items-center text-left"
+                >
+                    <div className="font-bold break-words">{name}</div>
                     <img
                         src="/github-small.svg"
                         alt="Github"
-                        className="ml-1"
+                        className="ml-1 shrink-0"
                     />
                 </a>
                 ) : (
                     <div className="font-bold">{name}</div>
                 )}
             {/* Dates */}
-            <div className="text-right">
+            <div className="text-base sm:text-right sm:text-xl">
                 <div>
                     {startMonth} {startYear} - {endMonth} {endYear}
                 </div>

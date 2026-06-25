@@ -9,28 +9,21 @@ type EducationProps = {
 };
 export default function Education( {image, school, major, startMonth, startYear, endMonth, endYear}: EducationProps) {
     return (
-        <div className="relative flex items-center my-8">
-        {/* Image */}
-        <div className="flex h-16 w-16 shrink-0 items-center justify-center p-3">
-            <img
-            src={image}
-            alt={school}
-            className="h-full w-full object-contain"
-            />
-        </div>
+    <div className="my-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center">
+            <div className="shrink-0">
+                <img src={image} className="h-12 w-12 object-contain sm:h-16 sm:w-16" />
+            </div>
 
-        {/* School and Major */}
-        <div className="flex flex-col text-left font-lato text-xl ml-5">
-            <div className="font-bold">{school}</div>
-            <div className="text-base">{major}</div>
-        </div>
-
-        {/* Dates */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 text-right font-lato text-xl">
-            <div>
-            {startMonth} {startYear} - {endMonth} {endYear}
+            <div className="ml-4 flex flex-col text-left font-lato text-lg sm:text-xl">
+                <div className="font-bold">{school}</div>
+                <div className="text-base">{major}</div>
             </div>
         </div>
+
+        <div className="font-lato text-base sm:text-right sm:text-xl">
+            {startMonth} {startYear} - {endMonth} {endYear}
         </div>
-    )
+    </div>
+);
 }
