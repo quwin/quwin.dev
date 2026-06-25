@@ -74,8 +74,8 @@ export default function Contacts() {
         </span>
 
         {copied && (
-          <div className="absolute -top-10 rounded-lg bg-limed-oak px-3 py-1 text-sm text-white shadow-md">
-            copied!
+            <div className="absolute top-full left-1/2 mt-2 w-max max-w-[80vw] -translate-x-1/2 rounded-lg bg-limed-oak px-3 py-1 text-center text-sm text-white shadow-md">
+            copied 'ethantran@quwin.dev' to clipboard
           </div>
         )}
       </div>
