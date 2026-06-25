@@ -56,14 +56,14 @@ export default function Navbar({
     return (
         <>
         <div
-            className={`fixed top-0 z-10 w-full bg-quarter-spanish-white py-3 transition-transform duration-300 sm:py-5 ${
+            className={`fixed top-0 z-10 w-full bg-quarter-spanish-white px-2 py-3 transition-transform duration-300 sm:py-5 ${
                 isVisible ? "translate-y-0" : "-translate-y-full"
             }`}
         >
-            <div className="flex overflow-x-auto whitespace-nowrap px-4 font-playfair text-lg sm:justify-center sm:text-2xl">
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2 px-3 font-playfair text-base leading-none sm:gap-x-8 sm:text-2xl">
                 <div className="flex items-center flex-col">
                     <div
-                        className="mx-4 cursor-pointer relative group"
+                        className="cursor-pointer relative group"
                         onClick={() => handleScrollTo(aboutRef)}>
                     about
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
@@ -71,7 +71,7 @@ export default function Navbar({
                 </div>
                 <div className="flex items-center flex-col">
                     <div
-                        className="mx-4 cursor-pointer relative group"
+                        className="cursor-pointer relative group"
                         onClick={() => handleScrollTo(assistantRef)}>
                         ask
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
@@ -79,7 +79,7 @@ export default function Navbar({
                 </div>
                 <div className="flex items-center flex-col">
                     <div
-                        className="mx-4 cursor-pointer relative group"
+                        className="cursor-pointer relative group"
                         onClick={() => handleScrollTo(educationRef)}>
                     education
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
@@ -87,22 +87,24 @@ export default function Navbar({
                 </div>
                 <div className="flex items-center flex-col">
                     <div
-                        className="mx-4 cursor-pointer relative group"
-                        onClick={() => handleScrollTo(workExperienceRef)}>
-                    work experience
+                        className="cursor-pointer relative group"
+                        onClick={() => handleScrollTo(workExperienceRef)}
+                    >
+                        <span className="sm:hidden">work</span>
+                        <span className="hidden sm:inline">work experience</span>
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                     </div>
                 </div>
                 <div className="flex items-center flex-col">
                     <div
-                        className="mx-4 cursor-pointer relative group"
+                        className="cursor-pointer relative group"
                         onClick={() => handleScrollTo(projectsRef)}>
                         projects
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                     </div>
                 </div>
                 <div className="flex items-center flex-col">
-                    <div className="mx-4 cursor-pointer relative group">
+                    <div className="cursor-pointer relative group">
                         <a onClick={handleResumeClick}>
                         resume
                         </a>
