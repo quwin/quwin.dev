@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       headers: {
         "Content-Type": "application/json",
         ...(process.env.RAG_API_KEY
-          ? { Authorization: `Bearer ${process.env.RAG_API_KEY}` }
+          ? { "X-API-Key": process.env.RAG_API_KEY }
           : {}),
       },
       body: JSON.stringify({
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
         dense_weight: 1.0,
         sparse_weight: 1.0,
       }),
-    });
+});
 
     if (!response.ok) {
       const errorText = await response.text();
