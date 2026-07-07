@@ -17,7 +17,6 @@ export default function Navbar({
 }: NavbarProps) {
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -47,11 +46,6 @@ export default function Navbar({
             ref.current.scrollIntoView({ behavior: "smooth" });
         }
     };
-
-    const handleResumeClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        setIsPopupOpen(true);
-    }
 
     return (
         <>
@@ -105,30 +99,18 @@ export default function Navbar({
                 </div>
                 <div className="flex items-center flex-col">
                     <div className="cursor-pointer relative group">
-                        <a onClick={handleResumeClick}>
-                        resume
+                        <a
+                            href="https://github.com/quwin/quwin/blob/main/profile/Ethan%20Tran%20Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            resume
                         </a>
                         <div className="absolute left-0 right-0 mx-auto mt-1 h-1 w-1 bg-limed-oak opacity-0 group-hover:opacity-100 transition-opacity rounded-full"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-{isPopupOpen && (
-    <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
-        <div className="relative bg-white p-6 rounded-xl shadow-xl max-w-md text-center">
-            <button
-                onClick={() => setIsPopupOpen(false)}
-                className="absolute top-3 right-3 text-xl font-bold hover:opacity-60"
-            >
-                ×
-            </button>
-            <p>
-                Please send an email to ethantran@quwin.dev to request a PDF of the resume.
-            </p>
-        </div>
-    </div>
-)}
     </>
     );
 }

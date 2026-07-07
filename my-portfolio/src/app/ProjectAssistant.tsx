@@ -43,7 +43,7 @@ const portfolioPresets: PresetQA[]  = [
 const solverPresets: PresetQA[]  = [
 
 ]
-const gamePresets: PresetQA[]  = [
+const apiPresets: PresetQA[]  = [
 
 ]
 const infiniportalPresets: PresetQA[]  = [
@@ -73,18 +73,18 @@ const PROJECTS: ProjectOption[] = [
     presets: solverPresets,
   },
   {
-    label: "Community Leaderboard",
-    collectionName: "quwin_infiniport.al",
+    label: "Discord Community Utilities",
+    collectionName: "quwin_infiniportal",
     description: "Ask about the full-stack platform and Discord chatbot.",
-    placeholder: "How many Discord servers added the Chatbot?",
+    placeholder: "How can I add the bot to my Discord server?",
     presets: infiniportalPresets,
   },
   {
-    label: "Physics Mobile Game",
-    collectionName: "quwin_Belevator-Tactics",
-    description: "Ask about my physics-based deterministic mobile game.",
-    placeholder: "How was the physics engine networked?",
-    presets: gamePresets,
+    label: "API Gateway + Rate Limiter",
+    collectionName: "quwin_API-Gateway",
+    description: "Ask about my API gateway written in Go.",
+    placeholder: "What rate limiting algorithims were implemented?",
+    presets: apiPresets,
   },
   {
     label: "Portfolio Website",
