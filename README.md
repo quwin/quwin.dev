@@ -140,12 +140,12 @@ app/
 
 The portfolio highlights projects including:
 
-* **RAG Pipeline for GitHub Documentation** – A deployable RAG pipeline for ingesting and querying GitHub documentation
-* **UnderTheGun** – A GPU-accelerated postflop poker solver
-* **API Gateway + Rate Limiter** – A configurable Go API gateway with per-plan rate limiting
-* **infiniportal** – A full-stack web platform with Discord chatbot utilities
-* **Belevator** – A deterministic physics-based mobile game
-* **Portfolio Website** – This website
+* [**RAG Pipeline for GitHub Documentation**](https://github.com/quwin/RAG-Github-Documentation-Pipeline) – A deployable RAG pipeline for ingesting and querying GitHub documentation
+* [**UnderTheGun**](https://github.com/quwin/UnderTheGun) – A GPU-accelerated postflop poker solver
+* [**API Gateway + Rate Limiter**](https://github.com/quwin/API-Gateway) – A configurable Go API gateway with per-plan rate limiting
+* [**infiniportal**](https://github.com/quwin/infiniportal) – A full-stack web platform with Discord chatbot utilities
+* [**Belevator**](https://github.com/quwin/Belevator-Tactics) – A deterministic physics-based mobile game
+* [**Portfolio Website**](https://github.com/quwin/quwin.dev) – This website
 
 ## Purpose
 
